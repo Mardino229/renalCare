@@ -11,7 +11,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAxiosPrivate } from "../hooks/useAxiosPrivate.ts";
 import Select from "../components/form/Select.tsx";
 import Label from "../components/form/Label.tsx";
-import { jsPDF } from "jspdf";
+// import { jsPDF } from "jspdf";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -207,19 +207,19 @@ const Calendar: React.FC = () => {
     }
   };
 
-  // Exporter les rendez-vous en PDF
-  const exportToPDF = () => {
-    const doc = new jsPDF();
-    doc.text("Rapport des rendez-vous", 10, 10);
-    events.forEach((event, index) => {
-      doc.text(
-          `${index + 1}. ${event.title} - ${event.start?.toString()}`,
-          10,
-          20 + index * 10
-      );
-    });
-    doc.save("rendez-vous.pdf");
-  };
+  // // Exporter les rendez-vous en PDF
+  // const exportToPDF = () => {
+  //   const doc = new jsPDF();
+  //   doc.text("Rapport des rendez-vous", 10, 10);
+  //   events.forEach((event, index) => {
+  //     doc.text(
+  //         `${index + 1}. ${event.title} - ${event.start?.toString()}`,
+  //         10,
+  //         20 + index * 10
+  //     );
+  //   });
+  //   doc.save("rendez-vous.pdf");
+  // };
 
   // Options pour les patients (format compatible avec react-select)
   const patientOptions = patients?.map((p: Patient) => ({
@@ -272,10 +272,10 @@ const Calendar: React.FC = () => {
                       openModal();
                     },
                   },
-                  exportButton: {
-                    text: "Exporter en PDF",
-                    click: exportToPDF,
-                  },
+                  // exportButton: {
+                  //   text: "Exporter en PDF",
+                  //   click: exportToPDF,
+                  // },
                 }}
             />}
           </div>
