@@ -3,8 +3,6 @@ import { useRef, useState } from "react";
 import { useAxiosPrivate } from "../../hooks/useAxiosPrivate.ts";
 import { useQuery } from "@tanstack/react-query";
 import Select from "../../components/form/Select.tsx";
-import { jsPDF } from "jspdf";
-import Button from "../../components/ui/button/Button.tsx";
 import ConsultationPatientTableOne from "../../components/tables/BasicTables/ConsultationPatientTableOne.tsx";
 import {Consultation} from "../../types/medicalTypes.ts";
 
@@ -45,21 +43,6 @@ export default function ConsultationPatientTables({ id }: { id: string | undefin
         consultation.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
         consultation.doctor.last_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-    // Exporter les consultations en PDF
-    const exportToPDF = () => {
-        const doc = new jsPDF();
-        doc.text(`Rapport des consultations du patient ${id}`, 10, 10);
-        filteredConsultations?.forEach((consultation, index) => {
-            doc.text(
-                `${index + 1}. ${consultation.patient.first_name}.${consultation.patient.last_name} - ${consultation.status} - ${new Date(consultation.date).toLocaleString()}`,
-                10,
-                20 + index * 10
-            );
-        });
-        doc.save(`consultations_patient_${id}.pdf`);
-    };
-
     return (
         <div className="space-y-6">
             <ComponentCard title="Consultations du patient">
@@ -101,13 +84,6 @@ export default function ConsultationPatientTables({ id }: { id: string | undefin
                                 className="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-200 bg-transparent py-2.5 pl-12 pr-14 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 xl:w-[430px]"
                             />
                         </div>
-                        <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={exportToPDF}
-                        >
-                            Exporter en PDF
-                        </Button>
                     </div>
                 </div>
                 <ConsultationPatientTableOne
