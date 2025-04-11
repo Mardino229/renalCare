@@ -76,6 +76,17 @@ export default function SignInForm() {
   return (
       <div className="flex flex-col flex-1">
         <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
+          <div className="lg:hidden mx-auto mb-4 flex items-center max-w-xs">
+            <Link to="/" className="block mb-4">
+              <img
+                  width={120}
+                  height={48}
+                  src="/images/logo/lo.png"
+                  alt="Logo"
+              />
+            </Link>
+            <h1 className="text-3xl font-extrabold text-gray-800 dark:text-white/90">RenalCare</h1>
+          </div>
           <div>
             <div className="mb-5 sm:mb-8">
               <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
