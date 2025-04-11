@@ -79,10 +79,10 @@ export default function SignInForm() {
           <div>
             <div className="mb-5 sm:mb-8">
               <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
-                Sign In
+                Se connecter
               </h1>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Enter your email and password to sign in!
+                Entrez votre email et votre mot de passe
               </p>
             </div>
             <div>
@@ -144,7 +144,7 @@ export default function SignInForm() {
                       size="sm"
                       disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Connexion en cours..." : "Sign in"}
+                    {isSubmitting ? "Connexion en cours..." : "Connexion"}
                   </Button>
                 </div>
               </form>
