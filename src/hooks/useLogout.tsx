@@ -15,7 +15,7 @@ const useLogout = () => {
         } catch (err) {
             console.log(err);
         }
-        setAuth({accessToken:"", username:""})
+        setAuth({accessToken:"", username:"", role: ""})
     };
 
 }
