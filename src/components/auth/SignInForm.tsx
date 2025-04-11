@@ -103,7 +103,7 @@ export default function SignInForm() {
                     Email <span className="text-error-500">*</span>
                   </Label>
                   <Input
-                      placeholder="info@gmail.com"
+                      placeholder="user@gmail.com"
                       {...register("email")}
                       error={!!errors.email} // Passe la prop error si erreur
                       hint={errors.email?.message} // Affiche le message d’erreur comme hint
@@ -117,7 +117,7 @@ export default function SignInForm() {
                   <div className="relative">
                     <Input
                         type={showPassword ? "text" : "password"}
-                        placeholder="Enter your password"
+                        placeholder="Entrez votre mot de passe"
                         {...register("password")}
                         error={!!errors.password}
                         hint={errors.password?.message}
