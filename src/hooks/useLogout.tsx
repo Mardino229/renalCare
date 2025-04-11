@@ -9,7 +9,7 @@ const useLogout = () => {
     return async () => {
         try {
             await axiosPrivate.post(
-                "/logot",
+                "/logout",
             );
             navigate('/');
         } catch (err) {
