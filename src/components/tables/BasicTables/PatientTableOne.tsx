@@ -90,7 +90,7 @@ export default function PatientTableOne({ searchTerm, itemsPerPage }: { searchTe
     return (
         <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
             <div className="max-w-full overflow-x-auto">
-                <div className={patients?.length !== 0 ? "min-w-[1200px]" : "h-[calc(100vh-28rem)] flex items-center justify-center"}>
+                <div className={patients?.length !== 0 ? "min-w-[1102px]" : "h-[calc(100vh-28rem)] flex items-center justify-center"}>
                     {isLoading ? (
                         error ? (
                             <p className="text-center text-red-600">Erreur lors du chargement des données</p>
