@@ -37,7 +37,7 @@ interface ValidationErrors {
 const appointmentSchema = z.object({
   patient_id: z.string().min(1, "Le patient est requis"),
   date: z.string().min(1, "La date est requise"),
-  type: z.enum(["consultation", "suivi", "urgence", ""], {
+  type: z.enum(["consultation", "analyse", ""], {
     errorMap: () => ({ message: "Le type de rendez-vous est requis" }),
   }),
   notes: z.string().optional(),
@@ -387,8 +387,7 @@ const Calendar: React.FC = () => {
                           <Select
                               options={[
                                 { value: "consultation", label: "Consultation" },
-                                { value: "suivi", label: "Suivi" },
-                                { value: "urgence", label: "Urgence" },
+                                { value: "analyse", label: "Analyse" },
                               ]}
                               placeholder="Sélectionner le type"
                               value={field.value}
@@ -433,7 +432,7 @@ const Calendar: React.FC = () => {
                     Fermer
                   </Button>
                   {selectedEvent? (
-                      <Button disabled={deleteMutation.isPending} onClick={handleDelete} className="bg-red-500 hover:bg-red-600">
+                      <Button type="button" disabled={deleteMutation.isPending} onClick={handleDelete} className="bg-red-500 hover:bg-red-600">
                         {deleteMutation.isPending ? "Annulation en cours  ..." : "Annuler le rendez-vous"}
                       </Button>
                   ): (

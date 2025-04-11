@@ -14,6 +14,8 @@ import BarChart from "./pages/Charts/BarChart.tsx";
 import PatientListPage from "./pages/Patient/PatientListPage.tsx";
 import PatientDetailPage from "./pages/Patient/PatientDetailPage.tsx";
 import AdminProfiles from "./pages/AdminPages/AdminProfiles.tsx";
+import WorkflowListPage from "./pages/Workflow/WorkflowListPage.tsx";
+import NotificationListPage from "./pages/Notification/NotificationListPage.tsx";
 
 function DashboardUserRoute  () {
 
@@ -25,6 +27,8 @@ function DashboardUserRoute  () {
                 <Route path="/profile" element={<AdminProfiles />} />
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/patient" element={<PatientListPage />} />
+                <Route path="/workflow" element={<WorkflowListPage />} />
+                <Route path="/notification" element={<NotificationListPage />} />
                 <Route path="/patient/:id" element={<PatientDetailPage />} />
 
                 {/* Forms */}

@@ -66,6 +66,7 @@ export interface Consultation {
     doctor_remarks: string,
     prescriptions: string,
     testResults: string,
+    type? : string,
     status: "confirmed" | "scheduled" | "cancelled";
     patient: {
         first_name: string;
@@ -74,6 +75,16 @@ export interface Consultation {
     doctor: {
         first_name: string;
         last_name: string;
+    };
+    test_result?: {
+        proteinuria: number | null;
+        albumin: number | null;
+        gfr: number | null;
+        diastolic_bp: number | null;
+        systolic_bp: number | null;
+        hemoglobin: number | null;
+        urea: number | null;
+        creatinine: number | null;
     }
 }
 
@@ -86,6 +97,7 @@ export interface Patient {
     email?: string;
     gender: "Homme"|"Femme"|"Autre";
     phone: string;
+    is_archived?: boolean
     address: string;
     blood_group: "A+"| "A-"| "B+"| "B-"| "AB+"| "AB-"| "O+"| "O-"|"";
     medical_history: string;

@@ -27,6 +27,7 @@ export default function ConsultationPatientTables({ id }: { id: string | undefin
     // Récupérer les consultations du patient
     const fetchConsultations = async (): Promise<Consultation[]> => {
         const response = await axiosPrivate.get(`/patients/${id}/consultations`);
+        console.log(response.data)
         return response.data as Consultation[];
     };
 
@@ -40,6 +41,8 @@ export default function ConsultationPatientTables({ id }: { id: string | undefin
     const filteredConsultations = consultations?.filter((consultation) =>
         consultation.date.toLowerCase().includes(searchTerm.toLowerCase()) ||
         consultation.doctor.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        consultation.type?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        consultation.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
         consultation.doctor.last_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
