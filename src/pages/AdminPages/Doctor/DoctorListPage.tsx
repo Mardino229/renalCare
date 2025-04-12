@@ -17,6 +17,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Doctor } from "../../../types/medicalTypes.ts";
 import DoctorTableOne from "../../../components/tables/BasicTables/DoctorTableOne.tsx";
+import Alert from "../../../components/ui/alert/Alert.tsx";
 
 // Schéma de validation avec Zod pour le formulaire Doctor
 const doctorSchema = z.object({
@@ -40,6 +41,7 @@ interface ValidationErrors {
     contact?: string;
     address?: string;
     general?: string;
+    message?: string;
 }
 
 export default function DoctorListPage() {
@@ -81,11 +83,11 @@ export default function DoctorListPage() {
             const response = await axiosPrivate.post("/doctors", doctor);
             return response.data;
         },
-        onSuccess: () => {
+        onSuccess: (data) => {
             queryClient.invalidateQueries({ queryKey: ["doctors"] });
             // queryClient.invalidateQueries({ queryKey: ["stat"] });
             reset();
-            setError({});
+            setError({message: data.response.message});
             closeModal();
         },
         onError: (error: ApiError) => {
@@ -122,6 +124,9 @@ export default function DoctorListPage() {
         <div>
             <PageMeta title="Gestion des docteurs" description="Docteurs" />
             <PageBreadcrumb pageTitle="Gestion des docteurs" pagePath="/admin/home" />
+            {mutation.isSuccess&&!!error.message &&
+                <Alert variant="success" seconds={3} title="Opération effectué" message={error.message}/>
+            }
             <div className="space-y-6">
                 <ComponentCard title="Liste des docteurs">
                     <div className="flex gap-4 flex-wrap justify-between">
