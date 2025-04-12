@@ -37,7 +37,7 @@ interface ValidationErrors {
     first_name?: string;
     last_name?: string;
     email?: string;
-    phone?: string;
+    contact?: string;
     address?: string;
     general?: string;
 }
@@ -226,8 +226,8 @@ export default function DoctorListPage() {
                                         <Input
                                             placeholder="Numéro de téléphone"
                                             {...register("phone")}
-                                            error={!!errors.phone || !!error.phone}
-                                            hint={error.phone || errors.phone?.message}
+                                            error={!!errors.phone || !!error.contact}
+                                            hint={error.contact || errors.phone?.message}
                                         />
                                     </div>
                                 </div>
