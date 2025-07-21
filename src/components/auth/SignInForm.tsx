@@ -96,7 +96,7 @@ export default function SignInForm() {
                 Entrez votre email et votre mot de passe
               </p>
             </div>
-            <div className="mt-4 p-3 rounded bg-yellow-100 text-sm text-yellow-800 border border-yellow-300">
+            <div className="mt-4 p-3 mb-3 rounded bg-yellow-100 text-sm text-yellow-800 border border-yellow-300">
               <strong>Identifiants administrateur de test :</strong><br />
               Email : <code>admin@example.com</code><br />
               Mot de passe : <code>admin</code>
